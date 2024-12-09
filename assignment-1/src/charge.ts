@@ -40,6 +40,7 @@ export function charge(invoice: Invoice, payments: Payment[]):Receipt {
   }
 
   let isCoupon = payments.every(payment => payment.type === 'COUPON');
-  if (isCoupon) return { total, deposit, change: 0 };
-  return { total: total, deposit: deposit, change: deposit - total };
+  return isCoupon
+  ? { total, deposit, change: 0 }
+  : { total, deposit, change: deposit - total };
 }
