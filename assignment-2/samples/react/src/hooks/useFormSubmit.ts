@@ -10,7 +10,7 @@ type FormData = {
 };
 
 export const useFormSubmit = () => {
-  const submitForm = async (data: FormData) => {
+  const submitForm = useCallback(async (data: FormData) => {
     const requestBody = {
       name: data.name,
       email: data.email,
@@ -35,7 +35,7 @@ export const useFormSubmit = () => {
     } catch (error) {
       console.error("送信エラー", error);
     }
-  };
+  }, []);
 
   return { submitForm };
 };
