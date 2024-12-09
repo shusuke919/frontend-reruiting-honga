@@ -11,7 +11,11 @@ type FormData = {
 };
 
 const RegistrationForm = () => {
-  const { register, handleSubmit } = useForm<FormData>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
 
   const onSubmit = (data: FormData) => {
     alert("フォームが送信");
@@ -26,6 +30,7 @@ const RegistrationForm = () => {
           placeholder="(例) トレタ 太郎"
           {...register("name", { required: "氏名は必須です" })}
         />
+        {errors.name?.message && <p>{String(errors.name.message)}</p>}
       </div>
 
       <div>
@@ -35,6 +40,7 @@ const RegistrationForm = () => {
           placeholder="(例)yoyaku@toreta.in"
           {...register("email", { required: "Eメールは必須です" })}
         />
+        {errors.email?.message && <p>{String(errors.email.message)}</p>}
       </div>
 
       <div>
@@ -44,6 +50,9 @@ const RegistrationForm = () => {
           placeholder="(例)0000000"
           {...register("postalCode", { required: "郵便番号は必須です" })}
         />
+        {errors.postalCode?.message && (
+          <p>{String(errors.postalCode.message)}</p>
+        )}
       </div>
 
       <div>
@@ -57,6 +66,9 @@ const RegistrationForm = () => {
           <option value="東京都">東京都</option>
           <option value="大阪府">大阪府</option>
         </select>
+        {errors.prefecture?.message && (
+          <p>{String(errors.prefecture.message)}</p>
+        )}
       </div>
 
       <div>
@@ -66,6 +78,7 @@ const RegistrationForm = () => {
           placeholder="(例)品川区西五反田7丁目22-17"
           {...register("address", { required: "市区町村・番地は必須です" })}
         />
+        {errors.address?.message && <p>{String(errors.address.message)}</p>}
       </div>
 
       <div>
