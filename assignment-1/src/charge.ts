@@ -39,13 +39,7 @@ export function charge(invoice: Invoice, payments: Payment[]):Receipt {
     throw new Error('Shortage');
   }
 
-  let isCoupon = true;
-  for (let i = 0; i < payments.length; i++) {
-    if (payments[i].type !== 'COUPON') {
-      isCoupon = false;
-      continue;
-    }
-  }
+  let isCoupon = payments.every(payment => payment.type === 'COUPON');
   if (isCoupon) return { total, deposit, change: 0 };
   return { total: total, deposit: deposit, change: deposit - total };
 }
