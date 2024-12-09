@@ -7,7 +7,7 @@ form {
   gap: 14px;
 }
 
-form div {
+form .input-group {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -27,6 +27,15 @@ form select {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
+}
+
+form .error-message {
+  color: red;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12.1px;
+  text-align: left;
+  margin: 4px 0 0 108px;
 }
 
 form button {
