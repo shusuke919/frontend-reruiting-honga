@@ -21,22 +21,38 @@ const RegistrationForm = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <label>氏名</label>
-        <input type="text" placeholder="(例) トレタ 太郎" />
+        <input
+          type="text"
+          placeholder="(例) トレタ 太郎"
+          {...register("name", { required: "氏名は必須です" })}
+        />
       </div>
 
       <div>
         <label>Eメール</label>
-        <input type="email" placeholder="(例)yoyaku@toreta.in" />
+        <input
+          type="email"
+          placeholder="(例)yoyaku@toreta.in"
+          {...register("email", { required: "Eメールは必須です" })}
+        />
       </div>
 
       <div>
         <label>郵便番号</label>
-        <input type="text" placeholder="(例)0000000" />
+        <input
+          type="text"
+          placeholder="(例)0000000"
+          {...register("postalCode", { required: "郵便番号は必須です" })}
+        />
       </div>
 
       <div>
         <label>都道府県</label>
-        <select>
+        <select
+          {...register("prefecture", {
+            required: "都道府県を選択してください",
+          })}
+        >
           <option value="">選択してください</option>
           <option value="東京都">東京都</option>
           <option value="大阪府">大阪府</option>
@@ -45,7 +61,11 @@ const RegistrationForm = () => {
 
       <div>
         <label>市区町村・番地</label>
-        <input type="text" placeholder="(例)品川区西五反田7丁目22-17" />
+        <input
+          type="text"
+          placeholder="(例)品川区西五反田7丁目22-17"
+          {...register("address", { required: "市区町村・番地は必須です" })}
+        />
       </div>
 
       <div>
