@@ -11,10 +11,14 @@ type FormData = {
 };
 
 const RegistrationForm = () => {
-  const { register } = useForm<FormData>();
+  const { register, handleSubmit } = useForm<FormData>();
+
+  const onSubmit = (data: FormData) => {
+    alert("フォームが送信");
+  };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <label>氏名</label>
         <input type="text" placeholder="(例) トレタ 太郎" />
