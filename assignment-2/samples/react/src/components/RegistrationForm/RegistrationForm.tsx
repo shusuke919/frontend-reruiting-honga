@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import "./RegistrationForm.css";
+import { useFormSubmit } from "../../hooks/useFormSubmit";
 
 type FormData = {
   name: string;
@@ -11,6 +12,7 @@ type FormData = {
 };
 
 const RegistrationForm = () => {
+  const { submitForm } = useFormSubmit();
   const {
     register,
     handleSubmit,
@@ -18,7 +20,7 @@ const RegistrationForm = () => {
   } = useForm<FormData>();
 
   const onSubmit = (data: FormData) => {
-    alert("フォームが送信");
+    submitForm(data);
   };
 
   return (
