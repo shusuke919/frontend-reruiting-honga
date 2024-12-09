@@ -90,7 +90,9 @@ const RegistrationForm = () => {
         />
       </div>
 
-      <button type="submit">登録</button>
+      <div className="button-container">
+        <button type="submit">登録</button>
+      </div>
     </form>
   );
 };
